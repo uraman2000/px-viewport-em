@@ -41,32 +41,43 @@ function activate(context) {
   };
 
   let em = vscode.commands.registerCommand("px-viewport.em", function () {
-    let cursorPosition = editor.selection.start;
-    let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
-    editor.edit((editBuilder) => {
-      editBuilder.replace(wordRange, ConvertToEm());
-    });
-
-    vscode.window.showInformationMessage("converted to vh");
+    try {
+      let cursorPosition = editor.selection.start;
+      let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
+      editor.edit((editBuilder) => {
+        editBuilder.replace(wordRange, ConvertToEm());
+      });
+      vscode.window.showInformationMessage("converted to em");
+    } catch (error) {
+      vscode.window.showInformationMessage(error);
+    }
   });
 
   let vh = vscode.commands.registerCommand("px-viewport.vh", function () {
-    let cursorPosition = editor.selection.start;
-    let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
-    editor.edit((editBuilder) => {
-      editBuilder.replace(wordRange, convertToViewport(height, "vh"));
-    });
+    try {
+      let cursorPosition = editor.selection.start;
+      let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
+      editor.edit((editBuilder) => {
+        editBuilder.replace(wordRange, convertToViewport(height, "vh"));
+      });
 
-    vscode.window.showInformationMessage("converted to vh");
+      vscode.window.showInformationMessage("converted to vh");
+    } catch (error) {
+      vscode.window.showInformationMessage(error);
+    }
   });
 
   let vw = vscode.commands.registerCommand("px-viewport.vw", function () {
-    let cursorPosition = editor.selection.start;
-    let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
-    editor.edit((editBuilder) => {
-      editBuilder.replace(wordRange, convertToViewport(width, "vw"));
-    });
-    vscode.window.showInformationMessage("converted to vw");
+    try {
+      let cursorPosition = editor.selection.start;
+      let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
+      editor.edit((editBuilder) => {
+        editBuilder.replace(wordRange, convertToViewport(width, "vw"));
+      });
+      vscode.window.showInformationMessage("converted to vw");
+    } catch (error) {
+      vscode.window.showInformationMessage(error);
+    }
   });
 
   context.subscriptions.push(vh);
