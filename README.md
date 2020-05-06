@@ -1,6 +1,6 @@
 # px-viewport README
 
-This is the README for your extension "px-viewport". After writing up a brief description, we recommend including the following sections.
+px-viewport-em allows you to convert px to vh,vw or em.
 
 ## Features
 
