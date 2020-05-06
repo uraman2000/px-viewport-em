@@ -1,7 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
-const editor = vscode.window.activeTextEditor;
 
 const width = 1920;
 const height = 1080;
@@ -17,6 +16,7 @@ function activate(context) {
   console.log('Congratulations, your extension "px-viewport" is now active!');
 
   const highlight = () => {
+    const editor = vscode.window.activeTextEditor;
     let cursorPosition = editor.selection.start;
     let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
     let highlight = editor.document.getText(wordRange);
@@ -41,6 +41,7 @@ function activate(context) {
   };
 
   let em = vscode.commands.registerCommand("px-viewport.em", function () {
+    const editor = vscode.window.activeTextEditor;
     try {
       let cursorPosition = editor.selection.start;
       let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
@@ -54,6 +55,7 @@ function activate(context) {
   });
 
   let vh = vscode.commands.registerCommand("px-viewport.vh", function () {
+    const editor = vscode.window.activeTextEditor;
     try {
       let cursorPosition = editor.selection.start;
       let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
@@ -68,6 +70,7 @@ function activate(context) {
   });
 
   let vw = vscode.commands.registerCommand("px-viewport.vw", function () {
+    const editor = vscode.window.activeTextEditor;
     try {
       let cursorPosition = editor.selection.start;
       let wordRange = editor.document.getWordRangeAtPosition(cursorPosition);
